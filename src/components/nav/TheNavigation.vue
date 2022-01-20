@@ -3,27 +3,18 @@
     <nav>
       <ul>
         <li>
-          <button @click="setActivePage('teams-list')">Teams</button>
+          <!-- <button @click="setActivePage('teams-list')">Teams</button> -->
+          <!-- Special anchor tag  -->
+          <router-link to="/teams"> Teams</router-link>
         </li>
         <li>
-          <button @click="setActivePage('users-list')">Users</button>
+          <!-- <button @click="setActivePage('users-list')">Users</button> -->
+          <router-link to="/users">Users</router-link>
         </li>
       </ul>
     </nav>
   </header>
 </template>
-
-<script>
-export default {
-  // To trigger method in parent component (App.vue)
-  emits: ['set-page'],
-  methods: {
-    setActivePage(page) {
-      this.$emit('set-page', page);
-    },
-  },
-};
-</script>
 
 <style scoped>
 header {
@@ -50,18 +41,19 @@ li {
   margin: 0 2rem;
 }
 
-button {
-  font: inherit;
+a {
   background: transparent;
   border: 1px solid transparent;
   cursor: pointer;
   color: white;
   padding: 0.5rem 1.5rem;
   display: inline-block;
+  text-decoration: none;
 }
 
-button:hover,
-button:active {
+a:hover,
+a:active,
+a.activeRouter {
   color: #f1a80a;
   border-color: #f1a80a;
   background-color: #1a037e;
