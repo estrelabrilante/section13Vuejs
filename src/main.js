@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import TeamsList from './components/teams/TeamsList.vue';
 import UsersList from './components/users/UsersList.vue';
+import TeamMembers from './components/teams/TeamMembers.vue';
+// Route configuration
 const router = createRouter({
   history: createWebHistory(),
   // which component should be load for a corresponding routes
@@ -17,6 +19,8 @@ const router = createRouter({
       path: '/users',
       component: UsersList,
     },
+    // Dynamic route
+    { path: '/teams/:teamId', component: TeamMembers },
   ],
   linkActiveClass: 'activeRouter',
 });

@@ -1,4 +1,5 @@
 <template>
+  <button @click="confirmInput">Confirm</button>
   <ul>
     <!-- Connect data in array teams from App.vue to teams-item component -->
     <teams-item
@@ -19,6 +20,12 @@ export default {
   },
   // inject data from App.vue
   inject: ['teams'],
+  methods: {
+    confirmInput() {
+      // navigating programmatically
+      this.$router.push('/users');
+    },
+  },
 };
 </script>
 

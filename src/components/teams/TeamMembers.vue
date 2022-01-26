@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       teamName: 'Test',
+      // Dummy data not rendering anywhere before dynamic router
       members: [
         { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
         { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
