@@ -9,6 +9,7 @@
         :name="member.fullName"
         :role="member.role"
       ></user-item>
+      <router-link to="/teams/t2">To team 2</router-link>
     </ul>
   </section>
 </template>
@@ -20,15 +21,34 @@ export default {
   components: {
     UserItem,
   },
+  inject: ['users', 'teams'],
   data() {
     return {
-      teamName: 'Test',
-      // Dummy data not rendering anywhere before dynamic router
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      // teamName: 'Test',
+      teamName: '',
+      members: [],
+      // Dummy data not rendering anywhere
+      // members: [
+      //   { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
+      //   { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
+      // ],
     };
+  },
+  //create lifecycle hook
+  created() {
+    const teamId = this.$route.params.teamId;
+    console.log(this.$route);
+    // select the right team
+    const selectedTeam = this.teams.find((team) => team.id === teamId);
+    // find members in team
+    const mem = selectedTeam.members;
+    const selectedMembers = [];
+    for (const member of mem) {
+      const selectedUser = this.users.find((user) => user.id === member);
+      selectedMembers.push(selectedUser);
+    }
+    this.members = selectedMembers;
+    this.teamName = selectedTeam.name;
   },
 };
 </script>
