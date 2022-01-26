@@ -22,6 +22,7 @@ export default {
     UserItem,
   },
   inject: ['users', 'teams'],
+  props: ['teamId'],
   data() {
     return {
       // teamName: 'Test',
@@ -35,8 +36,8 @@ export default {
     };
   },
   methods: {
-    loadTeamMembers(route) {
-      const teamId = route.params.teamId;
+    loadTeamMembers(teamId) {
+      // const teamId = route.params.teamId;
       console.log(this.$route);
       // select the right team
       const selectedTeam = this.teams.find((team) => team.id === teamId);
@@ -53,11 +54,11 @@ export default {
   },
   //create lifecycle hook
   created() {
-    this.loadTeamMembers(this.$route);
+    this.loadTeamMembers(this.teamId);
   },
   watch: {
-    $route(newRoute) {
-      this.loadTeamMembers(newRoute);
+    teamId(newId) {
+      this.loadTeamMembers(newId);
     },
   },
 };

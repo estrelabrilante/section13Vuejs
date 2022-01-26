@@ -5,6 +5,7 @@
   <main>
     <!-- Dynamic component -->
     <!-- <component :is="activePage"></component> -->
+    <!-- root component -->
     <router-view></router-view>
   </main>
 </template>

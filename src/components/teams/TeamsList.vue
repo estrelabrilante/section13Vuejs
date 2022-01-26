@@ -1,4 +1,5 @@
 <template>
+  <router-view></router-view>
   <button @click="confirmInput">Confirm</button>
   <ul>
     <!-- Connect data in array teams from App.vue to teams-item component -->
