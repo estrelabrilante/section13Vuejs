@@ -44,6 +44,12 @@ const router = createRouter({
       path: '/users',
       // component: UsersList,
       components: { default: UsersList, footer: UsersFooter },
+      //  navigation guard : route level
+      beforeEnter(to, from, next) {
+        console.log('users beforeEach');
+        console.log(to, from);
+        next();
+      },
     },
     // Dynamic route
 
@@ -60,7 +66,7 @@ const router = createRouter({
     return { left: 0, top: 0 };
   },
 });
-//
+// Global level : navigation guard
 router.beforeEach(function (to, from, next) {
   console.log('Global beforeEach');
   console.log(to, from);
@@ -73,6 +79,11 @@ router.beforeEach(function (to, from, next) {
   // }
 
   next();
+});
+router.afterEach(function (to, from) {
+  //  sending analytical data to server
+  console.log('Global After Each');
+  console.log(to, from);
 });
 const app = createApp(App);
 app.use(router);
