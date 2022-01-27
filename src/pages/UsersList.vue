@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import UserItem from './UserItem.vue';
+import UserItem from '../components/users/UserItem.vue';
 
 export default {
   components: {
@@ -45,7 +45,9 @@ export default {
     if (this.changesSaved) {
       next();
     } else {
-      const usersWantToLeave = confirm('Are you sure to leave');
+      const usersWantToLeave = confirm(
+        'Are you sure to leave without saving datas'
+      );
       next(usersWantToLeave);
     }
   },

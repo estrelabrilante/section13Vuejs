@@ -22,6 +22,7 @@ export default {
     UserItem,
   },
   inject: ['users', 'teams'],
+  // route parents are passed as props
   props: ['teamId'],
   data() {
     return {
