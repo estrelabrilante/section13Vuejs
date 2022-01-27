@@ -6,8 +6,13 @@
     <!-- Dynamic component -->
     <!-- <component :is="activePage"></component> -->
     <!-- root component -->
+    <!-- unnamed routes: default -->
     <router-view></router-view>
   </main>
+  <!-- named routes -->
+  <footer>
+    <router-view name="footer"></router-view>
+  </footer>
 </template>
 
 <script>

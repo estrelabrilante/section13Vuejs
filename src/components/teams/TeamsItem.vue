@@ -13,7 +13,28 @@ export default {
   props: ['id', 'name', 'memberCount'],
   computed: {
     teamMembersLink() {
-      return '/teams/' + this.id;
+      // return '/teams/' + this.id;
+
+      // navigating by path
+      //  return{
+      //    path: '/teams' + this.id
+      //  }
+
+      // navigating by named routes :destination of the link
+      return {
+        name: 'team-members',
+        // dynamic routes :teamId
+        params: { teamId: this.id },
+        query: { sort: 'optional' },
+      };
+
+      // navigating programmatically
+
+      // this.$router.push({
+      //   name: 'team-members',
+      //   params: { teamId: this.id },
+
+      // })
     },
   },
 };
